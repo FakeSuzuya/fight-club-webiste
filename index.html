@@ -6,6 +6,7 @@
     <title>Fight-Club</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -15,17 +16,17 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Entraineur</a></li>
-                <li><a href="#">Entrainement</a></li>
-                <li><a href="#">Contrat</a></li>
-                <li><a href="#">Contacter</a></li>
+                <li><a href="#section-entraineur">Entraineur</a></li>
+                <li><a href="#section-entrainement">Entrainement</a></li>
+                <li><a href="#section-contrat">Contrat</a></li>
+                <li><a href="#section-contacter">Contacter</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Plus qu'une Aventure,<br> un métier de force</h1>
+                <h1>Une Aventure,<br>un métier</h1>
                 <a href="#" class="cta-button">Pour en savoir plus</a>
             </div>
             <div class="hero-image">
@@ -34,11 +35,80 @@
                 </div>
             </div>
         </section>
+
+        <section id="section-entraineur" class="trainer">
+            <div class="trainer-content">
+                <div class="trainer-image">
+                    <div class="image-wrapper">
+                        <img src="image.png" alt="Trainer Image">
+                    </div>
+                </div>
+                <div class="trainer-text">
+                    <h2>Des entraînements personnalisés</h2>
+                    <a href="#" class="cta-button">Pour en savoir plus</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-entrainement" class="training">
+            <div class="training-content">
+                <div class="training-text">
+                    <h2>Des entraînements personnalisés</h2>
+                    <a href="#" class="cta-button">Pour en savoir plus</a>
+                </div>
+                <div class="training-image">
+                    <div class="image-wrapper">
+                        <img src="image.png" alt="Training Image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-contrat" class="contract">
+            <div class="contract-content">
+                <div class="contract-image">
+                    <div class="image-wrapper">
+                        <img src="image.png" alt="Boxing Glove">
+                    </div>
+                </div>
+                <div class="contract-text">
+                    <h2>Signer un contrat avec le FightClub</h2>
+                    <a href="#" class="cta-button">Pour en savoir plus</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-contacter" class="contact">
+            <h2>Nous Contacter</h2>
+            <form id="contact-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="discord" placeholder="Discord" required>
+                <input type="text" id="nom-rp" placeholder="Nom RP" required>
+                <textarea id="explication" placeholder="Explication" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+        
     </main>
+    <footer>
+        <div class="footer-content">
+            <span>Fight-Club 2024</span>
+            <a href="#">Confidentialité</a>
+            <a href="#">Notre Discord</a>
+            <a href="#">Réglementation</a>
+            <div class="footer-icons">
+                <span class="emoji" data-emoji="🔒"></span>
+                <span class="emoji" data-emoji="🗨️"></span>
+                <span class="emoji" data-emoji="📜"></span>
+            </div>
+        </div>
+    </footer>
     <button id="scrollToTopBtn">⬆</button>
-    <div class="boxing-glove">
-        <img src="image2.png" alt="Boxing Glove">
-    </div>
-    <script src="scripts.js"></script>
+    <script src=".js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            twemoji.parse(document.body);
+        });
+    </script>
 </body>
 </html>
