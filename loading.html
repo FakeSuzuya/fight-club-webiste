@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification de votre navigateur</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ajoutez ici vos feuilles de style supplémentaires si nécessaire -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Styles pour la page de chargement */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #loading-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #loading-logo {
+            width: 100px; /* Ajustez la taille de votre logo */
+            height: 100px; /* Ajustez la taille de votre logo */
+        }
+
+        .spinner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .text-primary {
+  color: #ff0000 !important;
+}
+        #captcha-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #captcha-box {
+            padding: 10px;
+            border: 2px solid #1b70e0;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #captcha-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+
+        #captcha-button {
+            padding: 10px 20px;
+            background-color: #27ae60;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+       
+        #success-message {
+    background-color: #27ae60;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: none; /* Masquer le message initialement */
+}
+
+#success-message.show {
+    display: flex; /* Utilisez flexbox pour centrer le contenu */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    min-height: 50px; /* Ajustez la hauteur minimale selon vos besoins */
+}
+
+    </style>
+</head>
+<body>
+    <div id="loading-logo-container">
+        <img src="votre-logo.png" alt="Logo de votre site" id="loading-logo">
+    </div>
+
+
+    <div class="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Chargement...</span>
+        </div>
+        <p>Chargement en cours...</p>
+    </div>
+
+    <div id="captcha-container">
+        <div id="captcha-box"></div>
+        <input type="text" id="captcha-input" placeholder="Entrez le texte du captcha">
+        <button id="captcha-button" onclick="verifierCaptcha()">Valider le captcha</button>
+    </div>
+    <div id="success-message" class="hidden">
+        <p>Captcha correct. Redirection dans 2 secondes...</p>
+    </div>
+    
+
+    <script>
+        // Attendez 5 secondes avant d'afficher le captcha
+        setTimeout(function () {
+            document.getElementById("captcha-container").style.display = "block";
+            genererCaptcha();
+        }, 5000); // 5000 millisecondes (5 secondes)
+
+        function genererCaptcha() {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var captcha = "";
+
+            for (var i = 0; i < 6; i++) {
+                var randomIndex = Math.floor(Math.random() * characters.length);
+                captcha += characters[randomIndex];
+            }
+
+            document.getElementById("captcha-box").textContent = captcha;
+        }
+
+        function verifierCaptcha() {
+    var captchaInput = document.getElementById("captcha-input").value;
+    var captchaCode = document.getElementById("captcha-box").textContent;
+    var successMessage = document.getElementById("success-message");
+
+    if (captchaInput === captchaCode) {
+        // Afficher le message de réussite
+        successMessage.classList.add("show");
+
+        // Utilisez setTimeout pour rediriger après 2 secondes
+        setTimeout(function () {
+            window.location.href = "index.html"; // Remplacez par le chemin de votre page d'index
+        }, 3000); // 2000 millisecondes (2 secondes)
+    } else {
+        alert("Captcha incorrect. Veuillez réessayer.");
+        genererCaptcha(); // Regénérer le captcha en cas d'erreur
+    }
+}
+
+    </script>
+
+    <!-- Inclure Bootstrap JavaScript (jQuery et Popper.js sont nécessaires) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
