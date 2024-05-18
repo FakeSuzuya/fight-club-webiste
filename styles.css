@@ -96,10 +96,9 @@ nav ul li a:hover {
 }
 
 .hero-content h1 {
-    font-size: 58px;
-    margin-bottom: 25px;
+    font-size: 48px;
+    margin-bottom: 20px;
     animation: slideInLeft 1s ease-in-out;
-    left: 300px;
 }
 
 @keyframes slideInLeft {
@@ -110,12 +109,12 @@ nav ul li a:hover {
     to {
         opacity: 1;
         transform: translateX(0);
-        left: 30px;
     }
 }
 
 .cta-button {
     display: inline-block;
+    margin-top: 20px;
     padding: 15px 30px;
     background: linear-gradient(90deg, #FF416C, #FF4B2B, #FF416C);
     background-size: 200% 200%;
@@ -164,9 +163,9 @@ nav ul li a:hover {
     bottom: 0;
     background: radial-gradient(circle at center, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0));
     border-radius: 15px;
-    z-index: -1;
-    filter: blur(100px);
+    filter: blur(40px);
     pointer-events: none;
+    z-index: -1;
 }
 
 .hero-image img {
@@ -188,59 +187,40 @@ nav ul li a:hover {
     }
 }
 
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: #fff;
-    color: #000;
-    font-size: 20px;
-    cursor: pointer;
-    display: none;
+.training, .trainer, .contract {
+    padding: 100px 20px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
 }
 
-#scrollToTopBtn:hover {
-    background-color: #FF416C;
-    color: #fff;
+.training-content, .trainer-content, .contract-content {
+    display: flex;
+    gap: 50px;
 }
 
-.boxing-glove {
-    position: fixed;
-    bottom: 80px;
-    left: 80px;
-    width: 120px;
-    height: 120px;
-    transform: rotate(-35deg);
-    animation: fadeInGlove 1s ease-in-out forwards;
+.training-image, .trainer-image, .contract-image {
+    position: relative;
+    width: 40%;
 }
 
-@keyframes fadeInGlove {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        transform: rotate(-35deg);
-    }
-}
-
-.boxing-glove img {
+.training-image img, .trainer-image img, .contract-image img {
     width: 100%;
     height: auto;
-    border-radius: 15%;
+    display: block;
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
-.boxing-glove::before {
+.training-image .image-wrapper, .trainer-image .image-wrapper, .contract-image .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.training-image .image-wrapper::before, .trainer-image .image-wrapper::before, .contract-image .image-wrapper::before {
     content: '';
     position: absolute;
     top: 0;
@@ -248,24 +228,117 @@ nav ul li a:hover {
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at center, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0));
-    border-radius: 50%;
-    z-index: -1;
-    filter: blur(20px);
+    border-radius: 15px;
+    filter: blur(40px);
     pointer-events: none;
+    z-index: -1;
 }
 
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
+.training-text, .trainer-text, .contract-text {
+    max-width: 50%;
+}
 
-    .hero-content {
-        max-width: 100%;
-    }
+.training-text h2, .trainer-text h2, .contract-text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
 
-    .hero-image {
-        margin-top: 20px;
-        width: 100%;
-    }
+.contact {
+    padding: 100px 20px;
+    background-color: #0E1726;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+form input, form textarea, form button {
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+
+form input, form textarea {
+    background-color: #1C2C3A;
+    color: #fff;
+}
+
+form button {
+    background-color: #FF416C;
+    color: #fff;
+    cursor: pointer;
+}
+
+footer {
+    padding: 20px;
+    background-color: #0E1726;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-icons .emoji {
+    font-size: 24px;
+    display: inline-block;
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #0E1726;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.boxing-glove {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.boxing-glove img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: blur(20px);
+    transform: rotate(-10deg);
 }
